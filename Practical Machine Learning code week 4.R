@@ -8,7 +8,7 @@ library(rpart) #Regressive partitioning and Regression trees
 library(rpart.plot) # Decision Tree Plot
 library(e1071)
 library(adabag) # Boosting function for the AdaBoost ensemble method
-set.seed(1234) # For reproducibility
+set.seed(12345) # For reproducibility
 
 ################################################################################
 #Import .csv training and testing dataset | Preliminary clearning
@@ -59,7 +59,7 @@ head(subTesting)
 ##In Wallace Ugulino et al., 2012 study, the variable "classe" contains 5 levels: A, B, C, D, E, assessing how well they do in a particular activity
 ## Plotting the variable "classe" enable to see the frequency of each levels in the subTraining dataset and compare one another
 plot(subTraining$classe, col="blue", main="Bar plot of levels of the variable classe within the subTraining dataset",xlab="classe levels", ylab="Frequency")
-########NEED TO SHOW RESULT
+
 
 ################################################################################
 
@@ -72,7 +72,7 @@ rpart.plot(model1,main="Classification Tree", extra=102,under=TRUE,faclen=0)
 
 ## Test results on our subTesting data set using the subTraining parameter and determine the accuracy
 confusionMatrix(prediction1, subTesting$classe) # Results: Accuracy=0.7394
-########NEED TO SHOW RESULT
+
 
 ################################################################################
 #Second Prediction Model using the Random Forest.
@@ -82,7 +82,7 @@ prediction2<-predict(model2, subTesting, type="class")
 
 ## Test results on our subTesting data set using the subTraining parameter and determine the accuracy
 confusionMatrix(prediction2, subTesting$classe) #Results: Accuracy=0.9955!
-########NEED TO SHOW RESULT
+
 
 
 ################################################################################
