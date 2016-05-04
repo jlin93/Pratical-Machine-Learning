@@ -21,7 +21,7 @@ set.seed(12345) # For reproducibility
 ## Data Collection for Training set: https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv
 ## Data collection for Test set: https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv
 ## After saving both data sets into my working directory, some missing values are coded as string "#DIV/0" or "" or "NA" - these will be cahnged to NA
-## Both data sets contain columns with all missing values - there will be deleted
+## Both data sets contain columns with all missing values - they will be deleted
 
 ## Loading the training data set into my R section replacing all missing with "NA"
 trainingset <- read.csv("~/R/pml-training.csv", na.strings=c("NA","#DIV/0!", ""))
@@ -161,7 +161,7 @@ confusionMatrix(prediction2, subTesting$classe) #Results: Accuracy=0.9949 !
 ## Balanced Accuracy      0.9991   0.9945   0.9968   0.9950   0.9972
 
 ################################################################################
-#Third Prediction Model using the K-Bearest Neightbors Model.
+#Third Prediction Model using the K-Nearest Neightbors Model.
 model3<- train(classe ~ ., data=subTraining, method = "knn", trControl = trainControl(method = "adaptive_cv"))
 ##Predicting:
 prediction3<-predict(model3, subTesting)
@@ -248,7 +248,7 @@ confusionMatrix(prediction4, subTesting$classe) #Results: 0.8924
 ################################################################################
 #Comparaison of models
 ##The model2 built from the Random Forest algorithm has a higher accuracy (=0.9949 with CI:(0.9925, 0.9967)) compared to the Decision Tree algorithm (=0.7229 with CI:(0.7101, 0.7354))
-## or the K-Bearest Neightbors Model (=0.9162 with CI(0.9081, 0.9238))
+## or the K-Nearest Neightbors Model (=0.9162 with CI(0.9081, 0.9238))
 ##Hence, the Random Forest model2 is choosen to be applied to the Testing data set
 ##The expected out-of-sample error is estimated at 0.5%. 
 ##The expected out-of-sample error is calculated as 1-accuracy for predictions made agains the cross-validation set.
